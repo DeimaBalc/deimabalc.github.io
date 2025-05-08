@@ -8,6 +8,10 @@ body {
     font-family: "Roboto Condensed", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
    
 }
 
@@ -19,12 +23,25 @@ header {
     padding-left: 10px;
     text-align: left;
     font-size: 36px;
-    
+}
+
+main {
+    flex: 1;
+    background-color: #f5ecd5;
+    padding: 20px;
+    font-size: 18px;
 }
 
 .vardas {
-    font-size: 45px;
+    
     color: #e5f0c3;
     margin: 0;
     padding: 0;
+}
+
+footer {
+    background-color: #626f47;
+    color: #f5ecd5;
+    padding: 10px;
+    text-align: center;
 }
