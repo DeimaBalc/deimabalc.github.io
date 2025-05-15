@@ -162,7 +162,7 @@ main {
     
 }
 
-.skyrius, .tekstas { flex: 1; }
+.tekstas { flex: 1; }
 
 .paveiksliukas {
     flex: 0 0 800px;  /* Increased from 300px */
@@ -191,6 +191,7 @@ main {
 
 .figura{
 
+    
     background-color: #626f47;
     width: 1000px; /* Adjust as needed */
     height: 500px; /* Half of the width */
@@ -205,10 +206,12 @@ main {
     
 }
 
+.figura h1 {color: #e5f0c3;}
+
 /* Typography */
 main h1 {
     font-size: 52px;
-    color: #e5f0c3;
+    color: #626f47;
     border-radius: 10px;
     padding: 10px;
 }
@@ -229,7 +232,7 @@ main p {
 }
 
 main a { color: #626f47; text-decoration: none; }
-main ul { list-style: none; margin: 10px; line-height: 1.3; }
+main ul { font-size: 24px; list-style: none; line-height: 1.3; }
 
 /* Footer */
 footer {
@@ -285,7 +288,7 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .turinys {
         gap: 1rem;
         padding: 15px;
@@ -327,7 +330,11 @@ footer {
     }
 
     header {
-        height: 150px;
+        height: 160px;
+    }
+
+    .overlay {
+        height: calc(100% - 30px);
     }
 
     header h1 {
@@ -358,4 +365,7 @@ footer {
     .main-nav a.active {
         padding: 0.3rem 0.5rem;
     }
+
+    main ul { font-size: 16px;}
 }
+
