@@ -1,28 +1,35 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 body {
-    font-family: "Roboto Condensed", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    font-family: "Roboto Condensed", -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
+    display: -webkit-flex;
+    display: -moz-flex;
     display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
     flex-direction: column;
     overflow-x: hidden; /* Only prevent horizontal scrolling */
     overflow-y: auto;
-
 }
-   
-
 
 header {
     background-image: url('images/image1.png');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
     background-size: cover;
     background-position: center;
     height: 100vh; /* Full viewport height */
+    height: -webkit-fill-available;
     width: 100%;
     position: relative;
     display: flex;
@@ -67,7 +74,6 @@ header p {
     padding: 20px;
 }
 
-
 .main-nav {
     background-color: rgba(98, 111, 71, 0.9);
     padding: 1rem 0;
@@ -105,11 +111,9 @@ header p {
     color: #e5f0c3;
 }
 
-
 main {
     flex: 1;
 }
-
 
 footer {
     background-color: #626f47;
