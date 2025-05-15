@@ -59,12 +59,12 @@ header p {
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 50px); /* Leave space for nav */
+    height: calc(100% - 50px); 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: px;
 }
 
 
@@ -117,5 +117,19 @@ footer {
     padding: 10px;
     text-align: center;
     width: 100%;
-    margin-top: auto; /* Push footer to bottom */
+    margin-top: auto;
+}
+
+
+@media (max-width: 768px) {
+    .main-nav ul {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main-nav a {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+    }
 }
