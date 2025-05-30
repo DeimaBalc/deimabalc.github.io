@@ -1,0 +1,418 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto Condensed", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5f0c3;
+}
+
+/* Header styles */
+header {
+    background-image: url('../images/image1.png');
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header h1 { font-size: 44px; color: #e5f0c3; }
+header h2 { font-size: 30px; color: #f5ecd5; }
+
+.overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    inset: 0;
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navigation */
+.main-nav {
+    background-color: rgba(98, 111, 71, 0.9);
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.main-nav a {
+    color: #f5ecd5;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.main-nav a:hover { color: #b0b899; }
+
+.main-nav a.active {
+    background-color: rgba(229, 240, 195, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #e5f0c3;
+}
+
+/*Responsive Scalloped Page Dividers (Using CSS Gradients) by Chilli Con Code*/
+
+/*----------------*/
+/*  SCALLOP down  */
+/*----------------*/
+.scallop-down {
+    height: 30px;
+    width: 100%;
+    background: -webkit-gradient(
+        radial,
+        50% 0,
+        10,
+        50% 0,
+        40,
+        from(#626f47),
+        color-stop(0.49, #626f47),
+        color-stop(0.51, #e5f0c3),
+        to(#e5f0c3)
+    );
+    background-size: 45px 100%;
+    position: relative;
+    margin: 0px 0;
+}
+
+/*----------------*/
+/*  SCALLOP up    */
+/*----------------*/
+.scallop-up {
+    height: 60px;
+    width: 100%;
+    background: -webkit-gradient(
+        radial,
+        50% 100%,
+        10,
+        50% 100%,
+        40,
+        from(#626f47),
+        color-stop(0.49, #626f47),
+        color-stop(0.51, #e5f0c3),
+        to(#e5f0c3)
+    );
+    background-size: 45px 100%;
+    position: relative;
+    margin: 0px 0;
+}
+
+/* Main content */
+main {
+    flex: 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 200px - 40px); /* viewport height - header - footer */
+}
+
+
+.turinys {
+    display: flex;
+    align-items: stretch; /* Changed from center to stretch */
+    gap: 2rem;
+    padding: 30px;
+    flex: 1; /* Added to allow content to grow */
+}
+
+.tekstas { flex: 1; margin-top: 200px; } /* Added margin-top to push text down */
+
+.paveiksliukas {
+    flex: 0 0 800px;  /* Increased from 300px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.paveiksliukas img {
+    max-width: 200%;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    max-height: 800px;  /* Added max-height for full screen */
+    object-fit: contain;
+}
+
+.paveiksliukas figcaption {
+    color: #626f47;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/*Figura*/
+
+.figura{
+
+    margin-top: 100px; /* Added margin-top to push figure down */
+    background-color: #626f47;
+    width: 1000px; /* Adjust as needed */
+    height: 500px; /* Half of the width */
+    position: absolute;
+    left: -750px; /* Start off-screen to the left */
+      /* Adjust vertical position as needed */
+    border-radius: 0 500px 500px 0; /* Creates the half-circle shape on the left */
+    /* background-color: #f7fafc;  Optional background, remove if you want it transparent */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Push text to the right side of the half-circle */
+    
+}
+
+.figura h1 {color: #e5f0c3;}
+
+/* Typography */
+main h1 {
+    font-size: 64px;
+    color: #626f47;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+main h2 {
+    font-size: 52px;
+    color: #626f47;
+    padding: 10px;
+}
+
+main p {
+    font-size: 24px;
+    color: #626f47;
+    margin: 10px;
+    margin-left: 300px;
+    line-height: 1.3;
+    text-align: justify;
+}
+
+main a { color: #626f47; text-decoration: none; }
+main ul { font-size: 24px; list-style: none; line-height: 1.3; }
+
+/* Footer */
+footer {
+    background-color: #626f47;
+    color: #f5ecd5;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* Social Links and Form Container */
+.social-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.social-links li {
+    margin: 10px 0;
+}
+
+.social-links a {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    color: #626f47;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #b0b899;
+}
+
+.social-links a i {
+    font-size: 40px;
+    margin-right: 15px;
+    width: 50px;
+    text-align: center;
+}
+
+.social-links a:hover i {
+    transform: scale(1.1);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-container iframe {
+    width: 100%;
+    height: 800px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* Responsive design */
+@media (max-width: 1500px) {
+    .turinys {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        
+    }
+
+    .tekstas {
+        margin-top: 0px; /* Remove margin-top for smaller screens */
+        order: 3  /* Place text last */
+    }
+
+    .paveiksliukas {
+        order: 1;  /* Place image first */
+        flex: 0 0 300px;  /* Smaller size for mobile */
+    }
+
+    .paveiksliukas img {
+        max-height: 500px;
+    }
+
+    .figura {
+        margin:20px auto;  /* Center horizontally with auto margins */
+        width: 250px;
+        height: 150px;
+        position: relative;
+        left: auto;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;  /* Center content vertically */
+    }
+
+    .tekstas {
+        order: 3;  
+    }
+
+    main h1 {
+        font-size: 52px;
+    }
+
+    main h1 {
+        margin-right: 0;
+    }
+
+    main p {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .turinys {
+        gap: 1rem;
+        padding: 15px;
+    }
+
+    .tekstas h2 {
+        font-size: 24px;
+    }
+
+    .tekstas p {
+        font-size: 16px;
+        margin: 0px 0px 0px 0px;
+        line-height: 1.4;
+        text-align: left;
+    }
+
+    .darkGreen h1 {
+        font-size: 28px;
+    }
+
+    .paveiksliukas {
+        flex: 0 0 200px;
+        margin-bottom: 0px;
+    }
+
+    .paveiksliukas img {
+        max-height: 500px;
+    }
+
+    .paveiksliukas figcaption {
+        font-size: 0.8rem;
+    }
+
+    .figura {
+        margin: 10px auto;
+        width: 200px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .figura h1 {
+        font-size: 32px;
+    }
+
+    header {
+        height: 160px;
+    }
+
+    .overlay {
+        height: calc(100% - 30px);
+    }
+
+    header h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    header h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .main-nav {
+        padding: 0.5rem 0;
+    }
+
+    .main-nav ul {
+        gap: 0.3rem;
+        flex-wrap: wrap;
+        padding: 0 5px;
+    }
+
+    .main-nav a {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .main-nav a.active {
+        padding: 0.3rem 0.5rem;
+    }
+
+    main ul { font-size: 16px;}
+
+    .form-container iframe {
+        height: 600px;
+    }
+    
+    .social-links a {
+        font-size: 24px;
+    }
+
+    .social-links a i {
+        font-size: 28px;
+        width: 35px;
+    }
+}
+
