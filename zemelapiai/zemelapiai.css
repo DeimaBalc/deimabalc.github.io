@@ -214,13 +214,7 @@ main {
 
 .figura h1 {color: #e5f0c3;}
 
-.stulpelis {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0 50px; /* Add some horizontal spacing */
-}
+
 
 /* Typography */
 main h1 {
