@@ -64,7 +64,7 @@ header p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 px;
+    padding: 0px;
 }
 
 
@@ -82,11 +82,7 @@ header p {
 
 .main-nav ul {
     list-style: none;
-    display: -webkit-box;
-    display: -webkit-flex;
     display: flex;
-    box-pack: center;
-    justify-content: center;
     justify-content: center;
     gap: 2rem;
     margin: 0;
