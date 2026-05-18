@@ -162,9 +162,9 @@ main {
 
 .figura{
 
-    margin-top: 100px; /* Added margin-top to push figure down */
+    /*margin-top: 10px; /* Added margin-top to push figure down */
     background-color: #626f47;
-    width: 1000px; /* Adjust as needed */
+    width: 1200px; /* Adjust as needed */
     height: 500px; /* Half of the width */
     position: absolute;
     left: -750px; /* Start off-screen to the left */
@@ -374,7 +374,7 @@ footer {
 
     .figura { /* General .figura for "Apie mane" section */
         margin: 20px auto;  
-        width: 200px;
+        width: 250px;
         height: 100px;
         position: relative; /* Ensure it's not absolutely positioned here */
         left: auto; /* Reset from base absolute */
@@ -495,7 +495,7 @@ footer {
 
     .figura { /* General .figura styling, applies to both unless overridden by .darkGreen .figura */
         margin: 10px auto;
-        width: 200px; /* Default for both figutas at this size */
+        width: 250px; /* Default for both figutas at this size */
         height: 100px;
         /* display, justify-content, align-items inherited from 1500px or base if not specified here */
     }
