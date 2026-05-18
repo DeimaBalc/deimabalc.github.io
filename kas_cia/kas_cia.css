@@ -39,35 +39,37 @@ header h2 { font-size: 30px; color: #f5ecd5; }
 }
 
 /* Navigation */
-.main-nav {
+/* ĮKLIJUOKITE ŠĮ KODĄ: */
+.custom-navbar {
     background-color: rgba(98, 111, 71, 0.9);
-    padding: 1rem 0;
+    width: 100%;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    z-index: 10;
 }
 
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.main-nav a {
-    color: #f5ecd5;
-    text-decoration: none;
+.custom-navbar .nav-link {
+    color: #f5ecd5 !important;
     font-size: 1.1rem;
     font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: color 0.3s ease;
 }
 
-.main-nav a:hover { color: #b0b899; }
+.custom-navbar .nav-link:hover {
+    color: #b0b899 !important;
+}
 
-.main-nav a.active {
+.custom-navbar .nav-link.active {
     background-color: rgba(229, 240, 195, 0.2);
-    padding: 0.5rem 1rem;
     border-radius: 5px;
-    color: #e5f0c3;
+    color: #e5f0c3 !important;
+}
+
+/* Mygtuko (hamburgerio) mobiliam vaizdui spalva */
+.navbar-toggler {
+    background-color: #e5f0c3;
+    margin: 10px auto;
 }
 
 /*Responsive Scalloped Page Dividers (Using CSS Gradients) by Chilli Con Code*/

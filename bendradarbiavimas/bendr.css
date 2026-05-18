@@ -52,6 +52,7 @@ header h2 { font-size: 30px; color: #f5ecd5; }
     display: flex;
     justify-content: center;
     gap: 2rem;
+    margin-bottom: 0 !important;
 }
 
 .main-nav a {
@@ -92,7 +93,7 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 240px); /* viewport - header(200) - footer(apytiksliai 40) */
+    min-height: calc(100vh - 240px);
 }
 
 .turinys {
@@ -117,10 +118,10 @@ main h2 {
 }
 
 main p {
-    font-size: 32px; /* Apsvarstykite mažinti dydį, 32px yra labai daug paprastam tekstui */
+    font-size: 32px;
     line-height: 1.3;
     text-align: justify;
-    margin: 10px auto; /* Pakeista iš left: 300px */
+    margin: 10px auto;
 }
 
 main a { color: #626f47; text-decoration: none; }
@@ -130,20 +131,15 @@ main ul { font-size: 24px; list-style: none; line-height: 1.3; }
 .turinys h1 { color: #e5f0c3; background-color: #626f47; }
 main h1, main h2, main p { color: #626f47; }
 
-/* Stulpeliai */
-.du_stulpeliai {
-    display: flex;
-    gap: 2rem;
+/* Custom Fonts */
+@font-face {
+    font-family: 'AnatomyHistory';
+    src: url('../fonts/Anatomy\ History\ Demo.ttf') format('truetype'); 
 }
 
-.du_stulpeliai .turinys {
-    margin: 0 auto; 
-}
-
-.du_stulpeliai .tekstas {
-    margin-top: 0;
-    width: 100%;
-    text-align: center;
+@font-face {
+    font-family: 'Masking';
+    src: url('../fonts/MaskingRenta-MAxjJ.otf') format('truetype'); 
 }
 
 /* Lentele listas */
@@ -157,6 +153,7 @@ ul.custom li {
     position: relative;
     padding-left: 26px;
     margin: 8px 0;
+    font-size: 24px;
 }
 
 ul.custom li::before {
@@ -169,10 +166,15 @@ ul.custom li::before {
     background: url("../images/star.png") center/contain no-repeat;
 }
 
-.du_stulpeliai ol, .du_stulpeliai ul {
-    display: inline-block;
-    text-align: left;
+ol {
     font-size: 24px;
+    padding-left: 30px;
+}
+
+#pasiulymai,
+#pasiulymai h2,
+#pasiulymai ul.custom {
+    font-family: 'Masking', serif;
 }
 
 /* LENTELES */
@@ -180,21 +182,36 @@ ul.custom li::before {
     margin: 0 auto;
 }
 
+/* 1. PAKEISTAS PAGRINDINIS LENTELĖS STILIUS */
 table {
     width: 100%;
     table-layout: fixed;
     margin: 0 auto;
-    border-collapse: collapse; /* Palikta tik čia */
+    
+    /* Pakeista, kad suveiktų kampų užapvalinimas */
+    border-collapse: separate; 
+    border-spacing: 0;
+    border-radius: 15px; /* Čia nustatomas užapvalinimo lygis */
+    
     background: #fff;
     border: 2px solid #626f47;
     overflow: hidden;  
 }
 
+/* 2. PAKEISTAS PAVADINIMO (CAPTION) STILIUS */
 table caption {
+    caption-side: top; /* Griežtai nurodome, kad pavadinimas turi būti VIRŠUJE */
+    text-align: center; /* Centruojame pavadinimą */
     font-size: 42px;
     font-weight: 700;
     color: #e5f0c3;
     padding: 12px;
+    margin-bottom: 15px; /* Padarome mažą tarpelį tarp pavadinimo ir pačios lentelės */
+}
+
+/* 3. NAUJA TAISYKLĖ: Kad lentelės apačioje nesusidubliuotų linijos */
+table tbody tr:last-child td {
+    border-bottom: none;
 }
 
 table th, table td {
@@ -216,83 +233,6 @@ table tbody tr:hover {
 
 table td {
     color: #626f47;
-}
-
-/* FORMA */
-.forma .tekstas {
-    width: 70%;
-    margin: 0 auto;
-    background: #fff;
-    border: 2px solid #626f47;
-    border-radius: 12px;
-    padding: 22px 26px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-
-.forma .tekstas p {
-    font-size: 18px;
-    margin: 12px 0;
-    color: #626f47;
-    line-height: 1.4;
-    text-align: left;
-}
-
-.forma label { font-weight: 700; color: #626f47; }
-
-.forma input[type="text"],
-.forma input[type="email"],
-.forma input[type="number"],
-.forma input[type="date"],
-.forma select,
-.forma textarea {
-    width: 100%;
-    padding: 10px 12px;
-    margin-top: 6px;
-    border: 1.5px solid #c8d2aa;
-    border-radius: 10px;
-    background: #fbfdf3;
-    font-size: 16px;
-    outline: none;
-}
-
-.forma input[type="radio"],
-.forma input[type="checkbox"] {
-    transform: scale(1.1);
-    margin-right: 8px;
-}
-
-.forma p label {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.forma button {
-    background: #626f47;
-    color: #e5f0c3;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.forma button:hover { background: #4f5a3a; }
-
-.forma button[type="reset"] {
-    background: transparent;
-    color: #626f47;
-    border: 2px solid #626f47;
-}
-
-.forma button[type="reset"]:hover { background: rgba(98,111,71,0.08); }
-
-.form-container {
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 20px;
 }
 
 /* Dark Green Section */
@@ -348,6 +288,9 @@ table td {
     margin-top: 0px;
 }
 
+/* Formos hover efektai papildomiems Bootstrap mygtukams */
+.forma button:hover { background: #4f5a3a !important; color: #fff !important; }
+
 /* Footer */
 footer {
     background-color: #626f47;
@@ -357,7 +300,6 @@ footer {
     margin-top: auto;
 }
 
-/* Responsive design */
 /* Responsive design */
 @media (max-width: 1500px) {
     .turinys {
@@ -370,24 +312,10 @@ footer {
         order: 3;  
     }
 
-    .du_stulpeliai .tekstas {
-        padding-left: 100px;
-    }
-
-    .du_stulpeliai h2 {
-        text-align: left;
-    }
-
-    .du_stulpeliai ul,
-    .du_stulpeliai ol {
-        font-size: 20px;
-    }
-
     table{
         font-size: 20px;
     }
 
-    /* Styles for .darkGreen section at 1500px */
     .darkGreen {
         flex-direction: column; 
     }
@@ -411,10 +339,6 @@ footer {
 
     .turinys {
         padding: 15px;
-    }
-
-    .du_stulpeliai .tekstas {
-        padding-left: 30px; /* Perrašo 100px iš 1500px medijos */
     }
 
     .tekstas h2 { 
@@ -447,10 +371,6 @@ footer {
         padding: 0 10px;
     }
 
-    .darkGreen .form-container {
-        padding: 10px;
-    }
-
     /* Headeris ir Navigacija */
     header {
         height: 160px;
@@ -470,30 +390,23 @@ footer {
         text-align: center;
     }
 
-    .main-nav {
+    .custom-navbar {
         padding: 0.5rem 0;
     }
 
-    .main-nav ul {
+    .custom-navbar ul {
         gap: 0.3rem;
         flex-wrap: wrap;
         padding: 0 5px;
+        justify-content: center;
     }
 
-    .main-nav a {
+    .custom-navbar .nav-link {
         font-size: 0.9rem;
-        padding: 0.3rem 0.5rem;
-    }
-
-    .main-nav a.active {
-        padding: 0.3rem 0.5rem; /* Kad sutaptų su paprastu link'u, bet išlaikytų foną */
+        padding: 0.3rem 0.5rem !important;
     }
 
     main ul { 
         font-size: 16px; 
     } 
-
-    .form-container iframe {
-        height: 600px;
-    }
 }

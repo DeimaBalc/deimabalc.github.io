@@ -146,7 +146,7 @@ main {
 
 .darkGreen p {
     font-size: 24px;
-    color: #e5f0c3;
+    color: #e5f0c3 ;
     margin: 10px;
     line-height: 1.3;
     text-align: justify;
@@ -185,6 +185,16 @@ main {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
+
+.paveiksliukas figure a:hover + figcaption {
+    background-color: #626f47;
+    color: #e5f0c3;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
 
 .paveiksliukas figcaption {
     color: #626f47;
