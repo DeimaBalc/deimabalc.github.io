@@ -70,175 +70,223 @@ header h2 { font-size: 30px; color: #f5ecd5; }
     color: #e5f0c3;
 }
 
-/*Responsive Scalloped Page Dividers (Using CSS Gradients) by Chilli Con Code*/
-
-/*----------------*/
-/*  SCALLOP down  */
-/*----------------*/
+/* Scalloped Page Dividers */
 .scallop-down {
     height: 30px;
     width: 100%;
-    background: -webkit-gradient(
-        radial,
-        50% 0,
-        10,
-        50% 0,
-        40,
-        from(#626f47),
-        color-stop(0.49, #626f47),
-        color-stop(0.51, #e5f0c3),
-        to(#e5f0c3)
-    );
+    background: -webkit-gradient(radial, 50% 0, 10, 50% 0, 40, from(#626f47), color-stop(0.49, #626f47), color-stop(0.51, #e5f0c3), to(#e5f0c3));
     background-size: 45px 100%;
     position: relative;
-    margin: 0px 0;
 }
 
-/*----------------*/
-/*  SCALLOP up    */
-/*----------------*/
 .scallop-up {
     height: 60px;
     width: 100%;
-    background: -webkit-gradient(
-        radial,
-        50% 100%,
-        10,
-        50% 100%,
-        40,
-        from(#626f47),
-        color-stop(0.49, #626f47),
-        color-stop(0.51, #e5f0c3),
-        to(#e5f0c3)
-    );
+    background: -webkit-gradient(radial, 50% 100%, 10, 50% 100%, 40, from(#626f47), color-stop(0.49, #626f47), color-stop(0.51, #e5f0c3), to(#e5f0c3));
     background-size: 45px 100%;
     position: relative;
-    margin: 0px 0;
 }
 
 /* Main content */
 main {
     flex: 1;
-    margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 200px - 40px); /* viewport height - header - footer */
+    min-height: calc(100vh - 240px); /* viewport - header(200) - footer(apytiksliai 40) */
 }
 
 .turinys {
     display: flex;
-    align-items: stretch; /* Changed from center to stretch */
+    align-items: stretch;
     gap: 2rem;
     padding: 30px;
-    flex: 1; /* Added to allow content to grow */
+    flex: 1;
 }
 
-.tekstas { flex: 1; margin-top: 200px; } /* Added margin-top to push text down */
-
-.paveiksliukas {
-    flex: 0 0 800px;  /* Increased from 300px */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.paveiksliukas img {
-    max-width: 200%;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    max-height: 800px;  /* Added max-height for full screen */
-    object-fit: contain;
-}
-
-.paveiksliukas figcaption {
-    color: #626f47;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    font-style: italic;
-}
-
-/*Figura*/
-
-.figura{
-
-    /*margin-top: 10px; /* Added margin-top to push figure down */
-    background-color: #626f47;
-    width: 1200px; /* Adjust as needed */
-    height: 500px; /* Half of the width */
-    position: absolute;
-    left: -750px; /* Start off-screen to the left */
-      /* Adjust vertical position as needed */
-    border-radius: 0 500px 500px 0; /* Creates the half-circle shape on the left */
-    /* background-color: #f7fafc;  Optional background, remove if you want it transparent */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Push text to the right side of the half-circle */
-    
-}
-
-.figura h1 {color: #e5f0c3;}
-
-/* Typography */
+/* Global Typography */
 main h1 {
     font-size: 52px;
-    color: #626f47;
     border-radius: 10px;
     padding: 10px;
+    margin: 0 auto;
 }
 
 main h2 {
     font-size: 32px;
-    color: #626f47;
     padding: 10px;
 }
 
 main p {
-    font-size: 32px;
-    color: #626f47;
-    margin: 10px;
-    margin-left: 300px;
+    font-size: 32px; /* Apsvarstykite mažinti dydį, 32px yra labai daug paprastam tekstui */
     line-height: 1.3;
     text-align: justify;
+    margin: 10px auto; /* Pakeista iš left: 300px */
 }
 
 main a { color: #626f47; text-decoration: none; }
 main ul { font-size: 24px; list-style: none; line-height: 1.3; }
 
-.social-links {
-    list-style: none;
+/* Specific Typography Colors */
+.turinys h1 { color: #e5f0c3; background-color: #626f47; }
+main h1, main h2, main p { color: #626f47; }
+
+/* Stulpeliai */
+.du_stulpeliai {
     display: flex;
-    flex-direction: column;
-    margin-left: 50%;
+    gap: 2rem;
 }
 
-.social-links li {
-    margin: 10px 0;
+.du_stulpeliai .turinys {
+    margin: 0 auto; 
 }
 
-.social-links a {
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    color: #e5f0c3;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: #b0b899;
-}
-
-.social-links a i {
-    font-size: 40px;
-    margin-right: 15px;
-    width: 50px;
+.du_stulpeliai .tekstas {
+    margin-top: 0;
+    width: 100%;
     text-align: center;
 }
 
-.social-links a:hover i {
-    transform: scale(1.1);
+/* Lentele listas */
+ul.custom {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem auto 0;
 }
+
+ul.custom li {
+    position: relative;
+    padding-left: 26px;
+    margin: 8px 0;
+}
+
+ul.custom li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    width: 16px;
+    height: 16px;
+    background: url("../images/star.png") center/contain no-repeat;
+}
+
+.du_stulpeliai ol, .du_stulpeliai ul {
+    display: inline-block;
+    text-align: left;
+    font-size: 24px;
+}
+
+/* LENTELES */
+.suvestine {
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    margin: 0 auto;
+    border-collapse: collapse; /* Palikta tik čia */
+    background: #fff;
+    border: 2px solid #626f47;
+    overflow: hidden;  
+}
+
+table caption {
+    font-size: 42px;
+    font-weight: 700;
+    color: #e5f0c3;
+    padding: 12px;
+}
+
+table th, table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #d8dfc2;
+    text-align: left;
+    font-size: 24px;
+    vertical-align: top;
+}
+
+table thead th {
+    background: #626f47;
+    color: #e5f0c3;
+}
+
+table tbody tr:hover {
+    background: #e5f0c3;  
+}
+
+table td {
+    color: #626f47;
+}
+
+/* FORMA */
+.forma .tekstas {
+    width: 70%;
+    margin: 0 auto;
+    background: #fff;
+    border: 2px solid #626f47;
+    border-radius: 12px;
+    padding: 22px 26px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.forma .tekstas p {
+    font-size: 18px;
+    margin: 12px 0;
+    color: #626f47;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.forma label { font-weight: 700; color: #626f47; }
+
+.forma input[type="text"],
+.forma input[type="email"],
+.forma input[type="number"],
+.forma input[type="date"],
+.forma select,
+.forma textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1.5px solid #c8d2aa;
+    border-radius: 10px;
+    background: #fbfdf3;
+    font-size: 16px;
+    outline: none;
+}
+
+.forma input[type="radio"],
+.forma input[type="checkbox"] {
+    transform: scale(1.1);
+    margin-right: 8px;
+}
+
+.forma p label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.forma button {
+    background: #626f47;
+    color: #e5f0c3;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.forma button:hover { background: #4f5a3a; }
+
+.forma button[type="reset"] {
+    background: transparent;
+    color: #626f47;
+    border: 2px solid #626f47;
+}
+
+.forma button[type="reset"]:hover { background: rgba(98,111,71,0.08); }
 
 .form-container {
     width: 100%;
@@ -247,13 +295,7 @@ main ul { font-size: 24px; list-style: none; line-height: 1.3; }
     padding: 20px;
 }
 
-.form-container iframe {
-    width: 100%;
-    height: 800px;
-    border-radius: 8px;
-    background-color: #fff;
-}
-
+/* Dark Green Section */
 .darkGreen {
     background-color: #626f47;
     width: 100%;
@@ -263,41 +305,15 @@ main ul { font-size: 24px; list-style: none; line-height: 1.3; }
     padding: 20px;
 }
 
-.darkGreen .turinys {
-    padding: 10px;
-    
-}
+.darkGreen .turinys { padding: 10px; }
+.darkGreen h1, .darkGreen h2, .darkGreen p { color: #e5f0c3; }
+.darkGreen p { font-size: 24px; margin: 0px; }
+.darkGreen a { color: #e5f0c3; }
 
-.darkGreen h1 {
-    font-size: 52px;
-    color: #e5f0c3;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.darkGreen h2 {
-    font-size: 32px;
-    color: #e5f0c3;
-    padding: 10px;
-}
-
-.darkGreen p {
-    font-size: 24px;
-    color: #e5f0c3;
-    margin: 0px;
-    line-height: 1.3;
-    text-align: justify;
-}
-
-.darkGreen a {
-    color: #e5f0c3;
-    text-decoration: none;
-}
 .darkGreen.social-links ul {
     font-size: 24px;
     list-style: none;
     line-height: 1.3;
-    
 }
 
 .darkGreen .social-links {
@@ -306,24 +322,17 @@ main ul { font-size: 24px; list-style: none; line-height: 1.3; }
     padding-left: 30vh;
 }
 
-.darkGreen .social-links a {
-    color: #e5f0c3;
-}
-
-.darkGreen .social-links a:hover {
-    color: #b0b899;
-}
+.darkGreen .social-links a:hover { color: #b0b899; }
 
 .darkGreen .figura {
-    margin: 0px auto;  /* Center horizontally with auto margins */
+    margin: 0px auto;
     width: 400px;
     height: 200px;
     position: relative;
-    left: auto;
     border-radius: 50%;
     display: flex;
     justify-content: center;
-    align-items: center;  /* Center content vertically */
+    align-items: center;
 }
 
 .stulpelis {
@@ -331,14 +340,12 @@ main ul { font-size: 24px; list-style: none; line-height: 1.3; }
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin: 0 50px; /* Add some horizontal spacing */
+    margin: 0 50px;
 }
 
 .darkGreen .tekstas {
-
     order: 3;  
-    margin-top: 0px; /* Remove margin-top for smaller screens */
-    
+    margin-top: 0px;
 }
 
 /* Footer */
@@ -351,6 +358,7 @@ footer {
 }
 
 /* Responsive design */
+/* Responsive design */
 @media (max-width: 1500px) {
     .turinys {
         flex-direction: column;
@@ -359,103 +367,73 @@ footer {
     }
 
     .tekstas {
-        margin-top: 0px; 
         order: 3;  
     }
 
-    .paveiksliukas {
-        order: 1;  
-        flex: 0 0 300px;  
+    .du_stulpeliai .tekstas {
+        padding-left: 100px;
     }
 
-    .paveiksliukas img {
-        max-height: 500px;
+    .du_stulpeliai h2 {
+        text-align: left;
     }
 
-    .figura { /* General .figura for "Apie mane" section */
-        margin: 20px auto;  
-        width: 250px;
-        height: 100px;
-        position: relative; /* Ensure it's not absolutely positioned here */
-        left: auto; /* Reset from base absolute */
-        border-radius: 50%; /* Make it a circle/ellipse */
-        display: flex;
-        justify-content: center;
-        align-items: center;  
+    .du_stulpeliai ul,
+    .du_stulpeliai ol {
+        font-size: 20px;
     }
 
-    .figura h1 { /* Applies to h1 within any .figura */
-        font-size: 32px;
-    }
-
-    /* .tekstas { REMOVED - Redundant rule, covered by .tekstas above } */
-    /* main h1 styling is fine */
-    /* main h1 margin-right is fine */
-
-    main p {
-        margin-left: 10px;
+    table{
+        font-size: 20px;
     }
 
     /* Styles for .darkGreen section at 1500px */
-
     .darkGreen {
-        flex-direction: column; /* Keep children in a row */
-    }
-    .darkGreen .figura { /* Specific figura inside .darkGreen remains larger */
-        margin: 0px auto; 
-        width: 400px; /* Retains larger size compared to general .figura */
-        height: 200px;
-        /* position, left, border-radius, display, justify-content, align-items already set in its base .darkGreen .figura style */
+        flex-direction: column; 
     }
 
     .darkGreen h1 {
-        font-size: 52px;
         text-align: center;
     }
 
     .darkGreen .turinys {
-        flex-direction: column; /* Stack children vertically */
-        align-items: center; /* Center children */
-        width: 100%; /* Full width for .darkGreen */
-        padding: 20px; /* Padding for .darkGreen */
-        gap: 1rem; /* Maintain gap between elements */
+        flex-direction: column; 
+        align-items: center; 
+        width: 100%; 
+        padding: 20px; 
     }
-    
-    /* .darkGreen .tekstas { REMOVED - General .tekstas rule above should cover this.
-        order: 3;  
-        margin-top: 0px; 
-    } */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     main {
-        min-height: calc(100vh - 160px - 40px); /* Adjusted for new header height */
+        min-height: calc(100vh - 200px); 
     }
 
     .turinys {
-        gap: 1rem;
         padding: 15px;
     }
 
-    .tekstas h2 { /* Applies to all .tekstas h2 */
+    .du_stulpeliai .tekstas {
+        padding-left: 30px; /* Perrašo 100px iš 1500px medijos */
+    }
+
+    .tekstas h2 { 
         font-size: 24px;
     }
 
-    .tekstas p { /* Applies to all .tekstas p */
+    .tekstas p { 
         font-size: 16px;
-        margin: 0px; /* Resets margin, good for small screens */
-        line-height: 1.4;
+        margin: 0; 
         text-align: left;
     }
 
+    /* DarkGreen sekcija */
     .darkGreen {
-        padding: 10px; /* Adjusted from 0px to give a little space */
-        flex-direction: column; /* Stack children vertically */
+        padding: 10px; 
     }
 
     .darkGreen h1 {
         font-size: 28px;
-        text-align: center;
     }
 
     .darkGreen h2 {
@@ -463,59 +441,23 @@ footer {
         text-align: center;
     }
 
-    .darkGreen p { /* Paragraphs directly inside .darkGreen, if any. Or style .darkGreen .turinys .tekstas p if needed */
+    .darkGreen p { 
         font-size: 16px;
-        margin: 10px; /* General margin for text within .darkGreen */
+        margin: 10px;
         padding: 0 10px;
-    }
-
-    .darkGreen .social-links {
-        margin: 10px auto; /* Center social links block */
-        width: 100%; /* Full width for the links container */
-        padding: 0 20px; /* Padding within the links container */
-        align-items: center; /* Center the social link items themselves if desired or keep flex-start */
     }
 
     .darkGreen .form-container {
         padding: 10px;
     }
-    
-    .paveiksliukas {
-        flex: 0 0 200px;
-        margin-bottom: 0px;
-    }
 
-    .paveiksliukas img {
-        max-height: 500px; /* This could be reduced further if needed */
-    }
-
-    .paveiksliukas figcaption {
-        font-size: 0.8rem;
-    }
-
-    .figura { /* General .figura styling, applies to both unless overridden by .darkGreen .figura */
-        margin: 10px auto;
-        width: 250px; /* Default for both figutas at this size */
-        height: 100px;
-        /* display, justify-content, align-items inherited from 1500px or base if not specified here */
-    }
-    .darkGreen .figura{
-        margin: 10px auto;
-        width: 200px; /* Default for both figutas at this size */
-        height: 100px;
-        border: #e5f0c3 solid 2px; /* Specific border for .darkGreen .figura */
-    }
-
-    .figura h1 { /* Applies to h1 within any .figura */
-        font-size: 32px;
-    }
-
+    /* Headeris ir Navigacija */
     header {
         height: 160px;
     }
 
     .overlay {
-        height: calc(100% - 30px); /* Assuming .main-nav takes up 30px height effectively */
+        height: calc(100% - 30px); 
     }
 
     header h1 {
@@ -544,24 +486,14 @@ footer {
     }
 
     .main-nav a.active {
-        padding: 0.3rem 0.5rem;
+        padding: 0.3rem 0.5rem; /* Kad sutaptų su paprastu link'u, bet išlaikytų foną */
     }
 
-    main ul { font-size: 16px;} /* General ul in main */
+    main ul { 
+        font-size: 16px; 
+    } 
 
     .form-container iframe {
         height: 600px;
-        /* width: 100%; */ /* Already 100% from base */
-    }
-    
-    .social-links a { /* General social links anchor styling */
-        font-size: 24px;
-    }
-
-    .social-links a i { /* General social links icon styling */
-        font-size: 28px;
-        width: 35px;
     }
 }
-/* Removed extraneous closing brace from here */
-
