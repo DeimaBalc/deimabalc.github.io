@@ -6,7 +6,7 @@
     <meta name="description" content="Bendradarbiavimo galimybės ir procesas">
     <title>DeimaBalc - Bendradarbiavimas</title>
     <link rel="icon" href="../images/manager.png" type="image/png">
-    <link rel="stylesheet" href="./bendradarbiavimas.css">
+    <link rel="stylesheet" href="./bendr.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
                 <li><a href="../kas_cia/kas_cia.html">Kas čia?</a></li>
                 <li><a href="../apie/apie.html">Kontaktai</a></li>
                 <li><a href="../zemelapiai/zemelapiai.html">Žemėlapiai</a></li>
-                <li><a href="bendradarbiavimas.html" class="active">Bendradarbiavimas</a></li>
+                <li><a href="bendr.html" class="active">Bendradarbiavimas</a></li>
             </ul>
         </nav>
     </header>
@@ -60,6 +60,103 @@
                     <li>Peržiūra ir pataisymai</li>
                     <li>Galutinis pateikimas</li>
                 </ol>
+            </div>
+        </section>
+
+                <section class="turinys">
+            <div class="tekstas">
+                <h2>Paslaugų suvestinė (lentelė)</h2>
+
+                <table>
+                    <caption>Bendradarbiavimo tipai</caption>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Tipas</th>
+                            <th colspan="2">Detalės</th>
+                            <th rowspan="2">Rezultatas</th>
+                        </tr>
+                        <tr>
+                            <th>Įrankis</th>
+                            <th>Aprašymas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">Interaktyvus žemėlapis</td>
+                            <td>KeplerGL</td>
+                            <td>Vizualizacijos, filtrai, sluoksniai</td>
+                            <td>Nuoroda / įkeltas žemėlapis</td>
+                        </tr>
+                        <tr>
+                            <td>ArcGIS</td>
+                            <td>Aplikacija / interaktyvi forma</td>
+                            <td>Web aplikacija</td>
+                        </tr>
+                        <tr>
+                            <td>Duomenų paruošimas</td>
+                            <td>QGIS</td>
+                            <td>Valymas, sujungimas, eksportas</td>
+                            <td>Paruošti duomenys + failai</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="turinys">
+            <div class="tekstas">
+                <h2>Užklausa bendradarbiavimui (forma)</h2>
+
+                <form action="#" method="post">
+                    <p>
+                        <label for="vardas">Vardas:</label><br>
+                        <input id="vardas" name="vardas" type="text" required>
+                    </p>
+
+                    <p>
+                        <label for="email">El. paštas:</label><br>
+                        <input id="email" name="email" type="email" required>
+                    </p>
+
+                    <p>
+                        <label for="biudzetas">Biudžetas (EUR):</label><br>
+                        <input id="biudzetas" name="biudzetas" type="number" min="0" step="10">
+                    </p>
+
+                    <p>
+                        Projekto tipas:<br>
+                        <label><input type="radio" name="tipas" value="zemelapis" required> Žemėlapis</label><br>
+                        <label><input type="radio" name="tipas" value="vizualizacija"> Vizualizacija</label>
+                    </p>
+
+                    <p>
+                        <label><input type="checkbox" name="sutinku" required> Sutinku, kad su manimi susisiektumėte</label>
+                    </p>
+
+                    <p>
+                        <label for="irankis">Įrankis:</label><br>
+                        <select id="irankis" name="irankis">
+                            <option value="kepler">KeplerGL</option>
+                            <option value="qgis">QGIS</option>
+                            <option value="arcgis">ArcGIS</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="data">Pageidaujama data:</label><br>
+                        <input id="data" name="data" type="date">
+                    </p>
+
+                    <p>
+                        <label for="zinute">Žinutė:</label><br>
+                        <textarea id="zinute" name="zinute" rows="4"></textarea>
+                    </p>
+
+                    <p>
+                        <button type="submit">Siųsti</button>
+                        <button type="reset">Išvalyti</button>
+                    </p>
+                </form>
             </div>
         </section>
     </main>
