@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
+    // Pagrindiniai puslapio elementai, su kuriais dirbs JavaScript
     const form = document.getElementById("collab-form");
     const btnStyle = document.getElementById("btn-style");
     const btnToggle = document.getElementById("btn-toggle");
@@ -7,18 +7,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const tableBody = document.getElementById("data-body");
     const tableTitle = document.getElementById("table-title");
 
-    // 1 PUNKTAS: Formos validacija
+    // 1 punktas: formos validacija
     form.addEventListener("submit", function (e) {
-        e.preventDefault(); // Sustabdome standartinį formos siuntimą
+        e.preventDefault(); // Sustabdomas standartinis formos siuntimas
 
         let isValid = true;
 
-        // Išvalome senas klaidas
-        document.querySelectorAll(".text-danger").forEach(el => {
+        // Išvalomos anksčiau rodytos klaidos
+        document.querySelectorAll(".text-danger").forEach((el) => {
             el.style.display = "none";
             el.innerHTML = "";
         });
 
+        // Paimamos visų formos laukų reikšmės
         const vardas = document.getElementById("vardas").value.trim();
         const email = document.getElementById("email").value.trim();
         const telefono = document.getElementById("telefono").value.trim();
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const tipas = tipasElement ? tipasElement.value : "";
         const irankis = document.getElementById("irankis").value;
 
-        // a. Tikriname, ar tušti
+        // Tikrinama, ar privalomi laukai nėra tušti
         if (vardas === "") {
             showError("vardas-error", "Vardas privalo būti užpildytas.");
             isValid = false;
@@ -69,58 +70,65 @@ document.addEventListener("DOMContentLoaded", function () {
             isValid = false;
         }
 
-        // b. Tikriname, ar biudžetas yra SVEIKAS ir TEIGIAMAS skaičius
+        // Tikrinama, ar biudžetas yra sveikas teigiamas skaičius
         const biudzetasNum = Number(biudzetas);
         if (biudzetas === "" || !Number.isInteger(biudzetasNum) || biudzetasNum <= 0) {
-            showError("biudzetas-error", "Biudžetas turi būti įvestas kaip sveikas teigiamas skaičius (pvz., 100).");
+            showError(
+                "biudzetas-error",
+                "Biudžetas turi būti įvestas kaip sveikas teigiamas skaičius (pvz., 100)."
+            );
             isValid = false;
         }
 
-        // 2 PUNKTAS: Asinchroninis komunikavimas su serveriu (Fetch API)
+        // 2 punktas: asinchroninis duomenų siuntimas į serverį
         if (isValid) {
-            // Konvertuojame į JSON objektą
+            // Paruošiamas JSON objektas siuntimui
             const formData = {
                 title: vardas,
                 body: zinute,
                 email: email,
                 phone: telefono,
                 deadline: terminas,
-                userId: biudzetasNum,
+                suma: biudzetasNum,
                 projectType: tipas,
                 tool: irankis,
                 consent: sutinku
             };
 
-            // Siunčiame duomenis į jsonplaceholder API
+            // Siunčiami duomenys į testinį API
             fetch("https://jsonplaceholder.typicode.com/posts", {
                 method: "POST",
                 body: JSON.stringify(formData),
                 headers: {
-                    "Content-type": "application/json; charset=UTF-8",
-                },
+                    "Content-type": "application/json; charset=UTF-8"
+                }
             })
-            .then(response => response.json())
-            .then(data => {
-                alert("Duomenys sėkmingai išsiųsti ir gauti atgal!");
-                // Pridedame gautus duomenis į HTML lentelę
-                addRowToTable(data);
-                form.reset(); // Išvalome formą
-            })
-            .catch(error => console.error("Klaida:", error));
+                .then((response) => response.json())
+                .then((data) => {
+                    alert("Duomenys sėkmingai išsiųsti ir gauti atgal!");
+
+                    // Gauti duomenys pridedami į lentelę
+                    addRowToTable(data);
+
+                    // Forma išvaloma po sėkmingo siuntimo
+                    form.reset();
+                })
+                .catch((error) => console.error("Klaida:", error));
         }
     });
 
-    // Funkcija klaidų rodymui HTML tekstu
+    // Funkcija klaidų parodymui prie konkretaus lauko
     function showError(elementId, message) {
         const errorEl = document.getElementById(elementId);
         errorEl.innerHTML = message;
         errorEl.style.display = "block";
     }
 
-    // Funkcija lentelės eilutės pridėjimui
+    // Funkcija naujai eilutei pridėti į lentelę
     function addRowToTable(data) {
         const tr = document.createElement("tr");
 
+        // Projekto tipo reikšmės pavertimas į vartotojui suprantamą tekstą
         let tipasText = "";
         if (data.projectType === "map") {
             tipasText = "Žemėlapis";
@@ -128,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tipasText = "Vizualizacija";
         }
 
+        // Įrankio reikšmės pavertimas į vartotojui suprantamą tekstą
         let irankisText = "";
         if (data.tool === "keplergl") {
             irankisText = "KeplerGL";
@@ -137,37 +146,37 @@ document.addEventListener("DOMContentLoaded", function () {
             irankisText = "ArcGIS";
         }
 
+        // Naujos eilutės HTML turinys
         tr.innerHTML = `
-            <td>${data.id}</td>
             <td>${data.title}</td>
             <td>${data.email}</td>
             <td>${data.phone}</td>
             <td>${data.deadline}</td>
-            <td>${data.userId} €</td>
+            <td>${data.suma} €</td>
             <td>${tipasText}</td>
             <td>${irankisText}</td>
             <td>${data.body}</td>
             <td>
-                <!-- 3 PUNKTAS: Mygtukas Delete elementų ištrynimui -->
+                <!-- 3 punktas: mygtukas eilutės ištrynimui -->
                 <button class="btn btn-danger btn-sm btn-delete" type="button">Delete</button>
             </td>
         `;
 
+        // Eilutė pridedama į lentelės turinį
         tableBody.appendChild(tr);
 
-        // Priskiriame trynimo funkcionalumą naujam mygtukui
+        // Priskiriamas naujos eilutės trynimo funkcionalumas
         tr.querySelector(".btn-delete").addEventListener("click", function () {
-            tr.remove(); // Ištrina HTML elementą (lentelės eilutę)
+            tr.remove();
         });
     }
 
-        
-    // 4 PUNKTAS: HTML elemento stiliaus pakeitimas (Temos keitimas visam puslapiui)
+    // 4 punktas: viso puslapio temos keitimas
     btnStyle.addEventListener("click", function () {
-        // Toggle prideda klasę, jeigu jos nėra, arba nuima, jeigu ji yra
+        // Įjungiama arba išjungiama rožinė tema
         document.body.classList.toggle("pink-theme");
-        
-        // Pakeičiame paties mygtuko išvaizdą ir tekstą
+
+        // Keičiamas paties mygtuko tekstas ir išvaizda pagal aktyvią temą
         if (document.body.classList.contains("pink-theme")) {
             btnStyle.textContent = "Grąžinti žalią temą";
             btnStyle.style.backgroundColor = "#b85c75";
@@ -175,13 +184,13 @@ document.addEventListener("DOMContentLoaded", function () {
             btnStyle.style.borderColor = "#b85c75";
         } else {
             btnStyle.textContent = "Change style (Rožinė tema)";
-            btnStyle.style.backgroundColor = "#626f47"; // Jūsų tamsiai žalia
+            btnStyle.style.backgroundColor = "#626f47";
             btnStyle.style.color = "white";
             btnStyle.style.borderColor = "#626f47";
         }
     });
 
-    // 5 PUNKTAS: HTML elemento parodymas/paslėpimas (Show/Hide)
+    // 5 punktas: lentelės parodymas ir paslėpimas
     btnToggle.addEventListener("click", function () {
         if (dataContainer.style.display === "none") {
             dataContainer.style.display = "block";
@@ -191,5 +200,4 @@ document.addEventListener("DOMContentLoaded", function () {
             btnToggle.textContent = "Show (Parodyti)";
         }
     });
-
 });
