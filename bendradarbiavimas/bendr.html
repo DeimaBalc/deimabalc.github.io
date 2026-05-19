@@ -117,61 +117,73 @@
         <section class="forma" id="uzklausos-forma">
             <section class="container mt-4 mb-5">
                 <div class="row justify-content-center">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="tekstas p-4" style="background: #fff; border: 2px solid #626f47; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.08);">
                             <h2 class="mb-4 text-center">Užklausa bendradarbiavimui (forma)</h2>
 
-                            <!-- BOOTSTRAP FORMŲ STILIAI: form-label, form-control, form-select, form-check -->
-                            <form action="#" method="post">
+                            <form id="collab-form">
                                 <div class="mb-3">
                                     <label for="vardas" class="form-label">Vardas:</label>
-                                    <input id="vardas" name="vardas" type="text" class="form-control" required>
+                                    <input id="vardas" name="vardas" type="text" class="form-control">
+                                    <span id="vardas-error" class="text-danger fw-bold" style="display:none;"></span>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="email" class="form-label">El. paštas:</label>
-                                    <input id="email" name="email" type="email" class="form-control" required>
+                                    <input id="email" name="email" type="email" class="form-control">
+                                    <span id="email-error" class="text-danger fw-bold" style="display:none;"></span>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="biudzetas" class="form-label">Biudžetas (EUR):</label>
-                                    <input id="biudzetas" name="biudzetas" type="number" min="0" step="10" class="form-control">
+                                    <label for="telefono" class="form-label">Telefono numeris:</label>
+                                    <input id="telefono" name="telefono" type="text" class="form-control" inputmode="numeric" pattern="[0-9+ ]+">
+                                    <span id="telefono-error" class="text-danger fw-bold" style="display:none;"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="terminas" class="form-label">Pageidaujamas terminas:</label>
+                                    <input id="terminas" name="terminas" type="date" class="form-control">
+                                    <span id="terminas-error" class="text-danger fw-bold" style="display:none;"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="biudzetas" class="form-label">Biudžetas (EUR) - <small>turi būti sveikas teigiamas skaičius</small>:</label>
+                                    <input id="biudzetas" name="biudzetas" type="number" class="form-control" min="1" step="1">
+                                    <span id="biudzetas-error" class="text-danger fw-bold" style="display:none;"></span>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label d-block">Projekto tipas:</label>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="tipas" value="zemelapis" id="tipas_zemelapis" required>
+                                        <input class="form-check-input" type="radio" name="tipas" value="map" id="tipas_zemelapis">
                                         <label class="form-check-label" for="tipas_zemelapis">Žemėlapis</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="tipas" value="vizualizacija" id="tipas_vizualizacija">
+                                        <input class="form-check-input" type="radio" name="tipas" value="visualization" id="tipas_vizualizacija">
                                         <label class="form-check-label" for="tipas_vizualizacija">Vizualizacija</label>
                                     </div>
+                                    <span id="tipas-error" class="text-danger fw-bold d-block" style="display:none;"></span>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="irankis" class="form-label">Įrankis:</label>
                                     <select id="irankis" name="irankis" class="form-select">
-                                        <option value="kepler">KeplerGL</option>
+                                        <option value="keplergl">KeplerGL</option>
                                         <option value="qgis">QGIS</option>
                                         <option value="arcgis">ArcGIS</option>
                                     </select>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="data" class="form-label">Pageidaujama data:</label>
-                                    <input id="data" name="data" type="date" class="form-control">
-                                </div>
-
-                                <div class="mb-3">
                                     <label for="zinute" class="form-label">Žinutė:</label>
                                     <textarea id="zinute" name="zinute" rows="4" class="form-control"></textarea>
+                                    <span id="zinute-error" class="text-danger fw-bold" style="display:none;"></span>
                                 </div>
 
                                 <div class="mb-4 form-check">
-                                    <input type="checkbox" class="form-check-input" name="sutinku" id="sutinku" required>
+                                    <input type="checkbox" class="form-check-input" name="sutinku" id="sutinku">
                                     <label class="form-check-label" for="sutinku">Sutinku, kad su manimi susisiektumėte</label>
+                                    <span id="sutinku-error" class="text-danger fw-bold d-block" style="display:none;"></span>
                                 </div>
 
                                 <div class="d-flex gap-2">
@@ -179,6 +191,41 @@
                                     <button type="reset" class="btn btn-outline-secondary px-4">Išvalyti</button>
                                 </div>
                             </form>
+
+                            <hr class="my-4">
+
+                            <!-- Nauji mygtukai iš JavaScript užduoties 4 ir 5 punktų -->
+                            <div class="d-flex gap-2 mb-3">
+                                <button id="btn-style" type="button" class="btn btn-warning text-dark fw-bold">Change style (Pakeisti stilių)</button>
+                                <button id="btn-toggle" type="button" class="btn btn-info text-dark fw-bold">Hide (Paslėpti)</button>
+                            </div>
+
+                            <!-- Lentelė duomenims atvaizduoti (užduoties 2 ir 3 punktai) -->
+                            <div id="data-container">
+                                <h4 id="table-title">Gauti duomenys iš serverio:</h4>
+                                <!-- Šiai lentelei nenaudojame jūsų green-table stilių, o paliekame paprastą Bootstrap stilių -->
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mt-3" id="data-table" style="font-size: 14px;">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Vardas</th>
+                                                <th>El. paštas</th>
+                                                <th>Tel. nr.</th>
+                                                <th>Terminas</th>
+                                                <th>Biudžetas</th>
+                                                <th>Projekto tipas</th>
+                                                <th>Įrankis</th>
+                                                <th>Žinutė</th>
+                                                <th>Veiksmas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="data-body">
+                                            <!-- Čia su JS įkelsime eilutes -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -191,6 +238,7 @@
     <footer>
         <p>&copy; 2024 DeimaBalc. All rights reserved.</p>
     </footer>
+    <script src="bendr.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
